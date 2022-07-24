@@ -24,7 +24,7 @@ def bar_freq_count(series_data):
     plt.bar(y_pos,bar_heights,align = 'center')
 
 workDir = '/home/alp/Google Drive/Python/DataSets/Data_Divvy/'
-raw = pd.read_csv(workDir + 'Divvy_Trips_2018_Q3.csv')
+raw4 = pd.read_csv(workDir + 'Divvy_Trips_2018_Q4.csv',parse_dates=['start_time','end_time']
 
 # convert str columns to specific data types
 raw['start_time'] = pd.to_datetime(raw['start_time'])
@@ -51,7 +51,7 @@ bar_freq_count(raw['hour'].value_counts())
 
 # pivot table analysis
 # by DOW - average trip length and number
-pd.pivot_table(raw,index = 'dow',values = 'tripduration',aggfunc=[np.mean,len])
+dow_table = pd.pivot_table(raw,index = 'dow',values = 'tripduration',aggfunc=[np.mean,len])
 
 # by hour in day 
-pd.pivot_table(raw,index = 'hour',values = 'tripduration',aggfunc=[np.mean,len])
+hour_table = pd.pivot_table(raw,index = 'hour',values = 'tripduration',aggfunc=[np.mean,len])
